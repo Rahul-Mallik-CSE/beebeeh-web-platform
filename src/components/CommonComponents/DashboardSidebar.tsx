@@ -4,6 +4,7 @@ import React from "react";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -14,13 +15,50 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-
+import { usePathname } from "next/navigation";
+import {
+  Home,
+  Briefcase,
+  Calendar,
+  Bell,
+  Settings,
+  LogOut,
+} from "lucide-react";
+import { Button } from "../ui/button";
 
 export default function DashboardSidebar() {
   const { state } = useSidebar();
-  
+  const pathname = usePathname();
 
   const isCollapsed = state === "collapsed";
+
+  const navItems = [
+    {
+      href: "/",
+      icon: Home,
+      label: "Home",
+    },
+    {
+      href: "/today's-jobs",
+      icon: Calendar,
+      label: "Today's Jobs",
+    },
+    {
+      href: "/all-jobs",
+      icon: Briefcase,
+      label: "All Jobs",
+    },
+    {
+      href: "/notifications",
+      icon: Bell,
+      label: "Notifications",
+    },
+    {
+      href: "/settings",
+      icon: Settings,
+      label: "Settings",
+    },
+  ];
   return (
     <>
       {/* mobile menu button */}
@@ -45,7 +83,7 @@ export default function DashboardSidebar() {
                   B
                 </h1>
               ) : (
-                <div className="flex items-center gap-2">
+                <div className="mt-2 flex items-center gap-2">
                   <Image src="/logo.png" alt="Logo" width={70} height={70} />
                 </div>
               )}
@@ -61,16 +99,41 @@ export default function DashboardSidebar() {
               <SidebarTrigger />
             </div>
           </div>
+          <SidebarMenu
+            className={
+              isCollapsed ? "px-2 space-y-4 items-center" : "md:px-6 space-y-4"
+            }
+          >
+            {navItems.map((item) => (
+              <NavItem
+                key={item.href}
+                href={item.href}
+                icon={item.icon}
+                label={item.label}
+                active={pathname === item.href || pathname === item.href + "/"}
+                collapsed={isCollapsed}
+              />
+            ))}
+          </SidebarMenu>
         </SidebarContent>
-
-        <SidebarMenu
-          className={
-            isCollapsed ? "px-2 space-y-2 items-center" : "md:px-6 space-y-1"
-          }
-        >
-
-
-        </SidebarMenu>
+        <SidebarFooter className="mb-4">
+          {/* Footer content can go here if needed */}
+          <div className="w-full flex justify-center">
+            <Button
+              variant="default"
+              size="sm"
+              className="bg-red-800 text-white hover:bg-red-700! hover:text-white!"
+            >
+              {isCollapsed ? (
+                <LogOut />
+              ) : (
+                <div className="flex justify-center items-center gap-2 px-3">
+                  <LogOut /> Log Out
+                </div>
+              )}
+            </Button>
+          </div>
+        </SidebarFooter>
       </Sidebar>
     </>
   );
@@ -101,8 +164,8 @@ function NavItem({
               ? "flex items-center justify-center px-2 py-3 transition-colors rounded-full w-12 h-12 mx-auto"
               : "flex items-center gap-3 px-4 py-3 transition-colors rounded-md",
             active
-              ? "bg-orange-100 text-orange-500 hover:bg-orange-100! hover:text-orange-500! font-medium"
-              : "bg-transparent text-black hover:bg-orange-50! hover:text-orange-500! font-medium"
+              ? "bg-red-800 text-white hover:bg-red-700! hover:text-white! font-medium"
+              : "bg-transparent text-black hover:bg-red-100!  font-medium"
           )}
         >
           <Icon size={collapsed ? 20 : 18} />
