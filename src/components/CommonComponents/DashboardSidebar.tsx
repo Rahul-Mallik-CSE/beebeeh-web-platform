@@ -1,6 +1,6 @@
 /** @format */
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   Sidebar,
   SidebarContent,
@@ -25,10 +25,12 @@ import {
   LogOut,
 } from "lucide-react";
 import { Button } from "../ui/button";
+import LogoutModal from "./LogOutModal";
 
 export default function DashboardSidebar() {
   const { state } = useSidebar();
   const pathname = usePathname();
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
   const isCollapsed = state === "collapsed";
 
@@ -59,6 +61,14 @@ export default function DashboardSidebar() {
       label: "Settings",
     },
   ];
+
+  const handleLogout = () => {
+    // Add your logout logic here (e.g., clear tokens, redirect, etc.)
+    console.log("Logging out...");
+    setIsLogoutModalOpen(false);
+    // Example: router.push('/login');
+  };
+
   return (
     <>
       {/* mobile menu button */}
@@ -123,6 +133,7 @@ export default function DashboardSidebar() {
               variant="default"
               size="sm"
               className="bg-red-800 text-white hover:bg-red-700! hover:text-white!"
+              onClick={() => setIsLogoutModalOpen(true)}
             >
               {isCollapsed ? (
                 <LogOut />
@@ -135,6 +146,12 @@ export default function DashboardSidebar() {
           </div>
         </SidebarFooter>
       </Sidebar>
+
+      <LogoutModal
+        isOpen={isLogoutModalOpen}
+        onClose={() => setIsLogoutModalOpen(false)}
+        onConfirm={handleLogout}
+      />
     </>
   );
 }
