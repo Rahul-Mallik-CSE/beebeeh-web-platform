@@ -15,8 +15,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
+
 export default function DashboardSidebar() {
   const { state } = useSidebar();
+  
 
   const isCollapsed = state === "collapsed";
   return (
@@ -65,7 +67,10 @@ export default function DashboardSidebar() {
           className={
             isCollapsed ? "px-2 space-y-2 items-center" : "md:px-6 space-y-1"
           }
-        ></SidebarMenu>
+        >
+
+
+        </SidebarMenu>
       </Sidebar>
     </>
   );
