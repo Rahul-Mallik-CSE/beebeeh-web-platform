@@ -59,6 +59,7 @@ export default function DashboardSidebar() {
             </div>
           </div>
         </SidebarContent>
+        
       </Sidebar>
     </>
   );
