@@ -78,10 +78,10 @@ export default function DashboardSidebar() {
 
       {/* Sidebar content goes here */}
       <Sidebar
-        className="border-r-0 border-transparent bg-white"
+        className="border-r-0 border-transparent bg-white! "
         collapsible="icon"
       >
-        <SidebarContent>
+        <SidebarContent className="bg-white">
           <div
             className={`flex items-center justify-center px-0 md:px-2 py-6 relative ${
               isCollapsed ? "px-2" : "gap-2"
@@ -126,7 +126,7 @@ export default function DashboardSidebar() {
             ))}
           </SidebarMenu>
         </SidebarContent>
-        <SidebarFooter className="mb-4">
+        <SidebarFooter className="pb-4 bg-white">
           {/* Footer content can go here if needed */}
           <div className="w-full flex justify-center">
             <Button
