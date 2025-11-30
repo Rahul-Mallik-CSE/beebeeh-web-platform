@@ -4,6 +4,7 @@ import React from "react";
 import {
   Sidebar,
   SidebarContent,
+  SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarTrigger,
@@ -59,7 +60,12 @@ export default function DashboardSidebar() {
             </div>
           </div>
         </SidebarContent>
-        
+
+        <SidebarMenu
+          className={
+            isCollapsed ? "px-2 space-y-2 items-center" : "md:px-6 space-y-1"
+          }
+        ></SidebarMenu>
       </Sidebar>
     </>
   );
