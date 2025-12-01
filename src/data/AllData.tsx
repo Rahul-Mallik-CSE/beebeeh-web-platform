@@ -1,6 +1,34 @@
 /** @format */
 
-import { Job } from "@/types/AllTypes";
+import { Job,  TableColumn } from "@/types/AllTypes";
+
+export const columns: TableColumn<Job>[] = [
+    {
+      header: "Job ID",
+      accessor: "id",
+      className: "font-medium",
+    },
+    {
+      header: "Job Type",
+      accessor: "jobType",
+    },
+    {
+      header: "Client Name",
+      accessor: "clientName",
+    },
+    {
+      header: "Contact Number",
+      accessor: "contactNumber",
+    },
+    {
+      header: "Ordered by time",
+      accessor: "orderedByTime",
+    },
+    {
+      header: "Status",
+      accessor: "status",
+    },
+  ];
 
 export const jobsData: Job[] = [
   {

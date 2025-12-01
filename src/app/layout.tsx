@@ -1,7 +1,7 @@
 /** @format */
 
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Zilla_Slab } from "next/font/google";
 import "./globals.css";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import DashboardSidebar from "@/components/CommonComponents/DashboardSidebar";
@@ -15,6 +15,11 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+const zillaSlab = Zilla_Slab({
+  variable: "--font-zilla-slab",
+  subsets: ["latin"],
+  weight: ["400", "700", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -30,12 +35,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#f3f3f3] `}
+        className={` ${geistSans.variable} ${geistMono.variable} ${zillaSlab.variable} antialiased bg-[#f3f3f3] font-sans`}
+        style={{ fontFamily: "var(--font-zilla-slab)" }}
       >
         <SidebarProvider>
           <DashboardSidebar />
           <SidebarInset>
-            <div className="px-4 bg-[#f3f3f3]">
+            <div className={`px-4 bg-[#f3f3f3]  `}>
               <NavBar />
               {children}
             </div>
