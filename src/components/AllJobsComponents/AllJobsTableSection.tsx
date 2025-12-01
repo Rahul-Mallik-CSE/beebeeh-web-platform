@@ -1,11 +1,10 @@
 /** @format */
 "use client";
-import React from "react";
 import CustomTable from "../CommonComponents/CustomTable";
 import { columns, jobsData } from "@/data/AllData";
-import { Job } from "@/types/AllTypes";
+import type { Job } from "@/types/AllTypes";
 
-const TodaysJobsTableSection = () => {
+const AllJobsTableSection = () => {
   const handleAction = (job: Job) => {
     console.log("View job details:", job);
     // Add your action logic here (e.g., navigate to details page)
@@ -16,10 +15,10 @@ const TodaysJobsTableSection = () => {
       data={jobsData}
       columns={columns}
       onAction={handleAction}
-      title="Today's Jobs"
+      title="All Jobs"
       additionalCount={5}
     />
   );
 };
 
-export default TodaysJobsTableSection;
+export default AllJobsTableSection;

@@ -38,7 +38,7 @@ export default function DashboardSidebar() {
     {
       href: "/",
       icon: Home,
-      label: "Home",
+      label: "Overview",
     },
     {
       href: "/todays-jobs",
