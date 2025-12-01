@@ -9,6 +9,15 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 import { Eye } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -178,43 +187,51 @@ const CustomTable = <T extends Record<string, any>>({
       </div>
 
       {/* Pagination */}
-      <div className="flex items-center justify-center gap-2">
-        <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-          className="px-3 py-1 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-        >
-          Previous
-        </button>
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious
+              onClick={() => handlePageChange(currentPage - 1)}
+              className={cn(
+                currentPage === 1
+                  ? "pointer-events-none opacity-50"
+                  : "cursor-pointer"
+              )}
+            />
+          </PaginationItem>
 
-        {getPageNumbers().map((page, index) => (
-          <React.Fragment key={index}>
-            {page === "..." ? (
-              <span className="px-3 py-1 text-gray-500">...</span>
-            ) : (
-              <button
-                onClick={() => handlePageChange(page as number)}
-                className={cn(
-                  "px-3 py-1 text-sm font-medium rounded-md transition-colors",
-                  currentPage === page
-                    ? "bg-red-800 text-white"
-                    : "text-gray-700 hover:bg-gray-100"
-                )}
-              >
-                {page}
-              </button>
-            )}
-          </React.Fragment>
-        ))}
+          {getPageNumbers().map((page, index) => (
+            <PaginationItem key={index}>
+              {page === "..." ? (
+                <PaginationEllipsis />
+              ) : (
+                <PaginationLink
+                  onClick={() => handlePageChange(page as number)}
+                  isActive={currentPage === page}
+                  className={cn(
+                    "cursor-pointer",
+                    currentPage === page &&
+                      "bg-red-800 text-white hover:bg-red-700 hover:text-white"
+                  )}
+                >
+                  {page}
+                </PaginationLink>
+              )}
+            </PaginationItem>
+          ))}
 
-        <button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          className="px-3 py-1 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-        >
-          Next
-        </button>
-      </div>
+          <PaginationItem>
+            <PaginationNext
+              onClick={() => handlePageChange(currentPage + 1)}
+              className={cn(
+                currentPage === totalPages
+                  ? "pointer-events-none opacity-50"
+                  : "cursor-pointer"
+              )}
+            />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
     </div>
   );
 };
