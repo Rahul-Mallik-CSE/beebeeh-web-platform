@@ -72,14 +72,14 @@ const CustomTable = <T extends Record<string, any>>({
     // Special rendering for status
     if (column.header === "Status" && typeof value === "string") {
       return (
-        <span
+        <div
           className={cn(
-            "px-3 py-1 rounded-md text-sm font-medium",
+            "w-24 px-2  py-1 flex justify-center items-center rounded-md text-sm font-medium",
             getStatusColor(value)
           )}
         >
           {value}
-        </span>
+        </div>
       );
     }
 
@@ -129,20 +129,20 @@ const CustomTable = <T extends Record<string, any>>({
       {title && (
         <div className="flex items-center justify-between">
           {title && (
-            <h2 className="text-xl font-semibold text-gray-800">{title}</h2>
+            <h2 className="text-3xl font-semibold text-gray-800">{title}</h2>
           )}
         </div>
       )}
 
-      <div className="rounded-lg border border-gray-200 overflow-hidden">
-        <Table>
+      <div className="rounded-lg overflow-hidden">
+        <Table className="border-none">
           <TableHeader>
-            <TableRow className="bg-gray-50 hover:bg-gray-50">
+            <TableRow className="bg-[#F1F4F9] hover:bg-[#F1F4F9] border-none">
               {columns.map((column, index) => (
                 <TableHead
                   key={index}
                   className={cn(
-                    "font-semibold text-gray-700 text-sm",
+                    "font-semibold text-gray-700 text-sm py-3",
                     column.className
                   )}
                 >
@@ -165,7 +165,7 @@ const CustomTable = <T extends Record<string, any>>({
                 {columns.map((column, colIndex) => (
                   <TableCell
                     key={colIndex}
-                    className={cn("text-gray-700", column.className)}
+                    className={cn("text-gray-700 py-5", column.className)}
                   >
                     {renderCell(row, column)}
                   </TableCell>
