@@ -1,9 +1,222 @@
 /** @format */
+"use client";
+import React, { useState } from "react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Eye } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-import React from "react";
+interface CustomTableProps<T> {
+  data: T[];
+  columns: {
+    header: string;
+    accessor: keyof T | ((row: T) => React.ReactNode);
+    className?: string;
+  }[];
+  onAction?: (row: T) => void;
+  itemsPerPage?: number;
+  title?: string;
 
-const CustomTable = () => {
-  return <div>CustomTable</div>;
+  additionalCount?: number;
+}
+
+const CustomTable = <T extends Record<string, any>>({
+  data,
+  columns,
+  onAction,
+  itemsPerPage = 10,
+  title,
+}: CustomTableProps<T>) => {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentData = data.slice(startIndex, endIndex);
+
+  const getStatusColor = (status: string) => {
+    switch (status.toLowerCase()) {
+      case "pending":
+        return "bg-yellow-100 text-yellow-700";
+      case "in progress":
+        return "bg-cyan-100 text-cyan-700";
+      case "complete":
+        return "bg-blue-100 text-blue-700";
+      default:
+        return "bg-gray-100 text-gray-700";
+    }
+  };
+
+  const renderCell = (row: T, column: (typeof columns)[0]) => {
+    if (typeof column.accessor === "function") {
+      return column.accessor(row);
+    }
+
+    const value = row[column.accessor as keyof T];
+
+    // Special rendering for status
+    if (column.header === "Status" && typeof value === "string") {
+      return (
+        <span
+          className={cn(
+            "px-3 py-1 rounded-md text-sm font-medium",
+            getStatusColor(value)
+          )}
+        >
+          {value}
+        </span>
+      );
+    }
+
+    return value as React.ReactNode;
+  };
+
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
+  const getPageNumbers = () => {
+    const pages: (number | string)[] = [];
+    const maxVisible = 5;
+
+    if (totalPages <= maxVisible) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      if (currentPage <= 3) {
+        for (let i = 1; i <= 4; i++) pages.push(i);
+        pages.push("...");
+        pages.push(totalPages);
+      } else if (currentPage >= totalPages - 2) {
+        pages.push(1);
+        pages.push("...");
+        for (let i = totalPages - 3; i <= totalPages; i++) pages.push(i);
+      } else {
+        pages.push(1);
+        pages.push("...");
+        pages.push(currentPage - 1);
+        pages.push(currentPage);
+        pages.push(currentPage + 1);
+        pages.push("...");
+        pages.push(totalPages);
+      }
+    }
+
+    return pages;
+  };
+
+  return (
+    <div className="w-full space-y-4">
+      {/* Header */}
+      {title && (
+        <div className="flex items-center justify-between">
+          {title && (
+            <h2 className="text-xl font-semibold text-gray-800">{title}</h2>
+          )}
+        </div>
+      )}
+
+      <div className="rounded-lg border border-gray-200 overflow-hidden">
+        <Table>
+          <TableHeader>
+            <TableRow className="bg-gray-50 hover:bg-gray-50">
+              {columns.map((column, index) => (
+                <TableHead
+                  key={index}
+                  className={cn(
+                    "font-semibold text-gray-700 text-sm",
+                    column.className
+                  )}
+                >
+                  {column.header}
+                </TableHead>
+              ))}
+              {onAction && (
+                <TableHead className="font-semibold text-gray-700 text-sm text-right">
+                  Action
+                </TableHead>
+              )}
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {currentData.map((row, rowIndex) => (
+              <TableRow
+                key={rowIndex}
+                className="hover:bg-gray-50 transition-colors"
+              >
+                {columns.map((column, colIndex) => (
+                  <TableCell
+                    key={colIndex}
+                    className={cn("text-gray-700", column.className)}
+                  >
+                    {renderCell(row, column)}
+                  </TableCell>
+                ))}
+                {onAction && (
+                  <TableCell className="text-right">
+                    <button
+                      onClick={() => onAction(row)}
+                      className="p-2 hover:bg-gray-100 rounded-full transition-colors inline-flex items-center justify-center"
+                    >
+                      <Eye className="w-5 h-5 text-gray-600" />
+                    </button>
+                  </TableCell>
+                )}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+
+      {/* Pagination */}
+      <div className="flex items-center justify-center gap-2">
+        <button
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+          className="px-3 py-1 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        >
+          Previous
+        </button>
+
+        {getPageNumbers().map((page, index) => (
+          <React.Fragment key={index}>
+            {page === "..." ? (
+              <span className="px-3 py-1 text-gray-500">...</span>
+            ) : (
+              <button
+                onClick={() => handlePageChange(page as number)}
+                className={cn(
+                  "px-3 py-1 text-sm font-medium rounded-md transition-colors",
+                  currentPage === page
+                    ? "bg-red-800 text-white"
+                    : "text-gray-700 hover:bg-gray-100"
+                )}
+              >
+                {page}
+              </button>
+            )}
+          </React.Fragment>
+        ))}
+
+        <button
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          className="px-3 py-1 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default CustomTable;

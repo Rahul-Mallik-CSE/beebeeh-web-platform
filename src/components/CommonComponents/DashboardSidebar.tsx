@@ -41,7 +41,7 @@ export default function DashboardSidebar() {
       label: "Home",
     },
     {
-      href: "/today's-jobs",
+      href: "/todays-jobs",
       icon: Calendar,
       label: "Today's Jobs",
     },
