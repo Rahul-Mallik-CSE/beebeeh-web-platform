@@ -18,7 +18,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { Eye } from "lucide-react";
+import { View } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface CustomTableProps<T> {
@@ -176,7 +176,7 @@ const CustomTable = <T extends Record<string, any>>({
                       onClick={() => onAction(row)}
                       className="p-2 hover:bg-gray-100 rounded-full transition-colors inline-flex items-center justify-center"
                     >
-                      <Eye className="w-5 h-5 text-gray-600" />
+                      <View className="w-5 h-5 text-gray-600" />
                     </button>
                   </TableCell>
                 )}
