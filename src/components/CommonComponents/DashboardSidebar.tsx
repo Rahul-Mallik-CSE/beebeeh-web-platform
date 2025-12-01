@@ -17,7 +17,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import {
-  Home,
+  LayoutGrid,
   Briefcase,
   Calendar,
   Bell,
@@ -37,7 +37,7 @@ export default function DashboardSidebar() {
   const navItems = [
     {
       href: "/",
-      icon: Home,
+      icon: LayoutGrid,
       label: "Overview",
     },
     {
