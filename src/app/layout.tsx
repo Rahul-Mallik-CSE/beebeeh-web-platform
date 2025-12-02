@@ -41,7 +41,7 @@ export default function RootLayout({
         <SidebarProvider>
           <DashboardSidebar />
           <SidebarInset>
-            <div className={`px-4 bg-[#f3f3f3]  `}>
+            <div className={`px-4 bg-[#f3f3f3] min-h-screen `}>
               <NavBar />
               {children}
             </div>
