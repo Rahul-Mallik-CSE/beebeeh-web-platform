@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Pencil, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import ProfileEditModal from "./ProfileEditModal";
 
 const ProfileSection = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,7 @@ const ProfileSection = () => {
     role: "Technician",
     password: "************",
   });
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -24,7 +26,18 @@ const ProfileSection = () => {
   };
 
   const handleEdit = () => {
-    console.log("Edit profile clicked");
+    setIsEditModalOpen(true);
+  };
+
+  const handleSaveChanges = (data: {
+    fullName: string;
+    contactNumber: string;
+    address: string;
+  }) => {
+    setFormData({
+      ...formData,
+      ...data,
+    });
   };
 
   const handleChangePassword = () => {
@@ -158,6 +171,18 @@ const ProfileSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Edit Modal */}
+      <ProfileEditModal
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+        currentData={{
+          fullName: formData.fullName,
+          contactNumber: formData.contactNumber,
+          address: formData.address,
+        }}
+        onSave={handleSaveChanges}
+      />
     </div>
   );
 };
