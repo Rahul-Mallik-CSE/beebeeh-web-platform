@@ -22,3 +22,12 @@ export interface TableColumn<T> {
   accessor: keyof T | ((row: T) => React.ReactNode);
   className?: string;
 }
+
+export type NotificationType = "schedule" | "admin" | "report" | "checklist";
+
+export interface Notification {
+  id: string;
+  title: string;
+  time: string;
+  type: NotificationType;
+}
