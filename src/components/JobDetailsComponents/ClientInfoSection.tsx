@@ -4,38 +4,36 @@ import { MapPin } from "lucide-react";
 
 const ClientInfoSection = () => {
   return (
-    <div className="bg-white rounded-2xl p-6 border border-gray-200">
-      <h3 className="text-lg font-semibold text-gray-800 mb-4">
+    <div className="bg-white">
+      <h3 className="text-lg font-semibold text-gray-800 mb-3">
         Client Information Section:
       </h3>
-      <div className="space-y-4 text-sm">
-        <div>
-          <p className="text-gray-500">Client Name :</p>
-          <p className="font-medium text-gray-800">John Doe</p>
+      <div className="space-y-4 border border-gray-200 p-4 rounded-2xl">
+        <div className="flex items-center justify-between py-2 border-b border-gray-100">
+          <p className="text-gray-800 font-medium text-base">Client Name :</p>
+          <p className="text-gray-500 text-sm">John Doe</p>
         </div>
-        <div>
-          <p className="text-gray-500">Contact Number :</p>
-          <p className="font-medium text-gray-800">+1 323 654 9384</p>
-        </div>
-        <div>
-          <p className="text-gray-500">Address :</p>
-          <p className="font-medium text-gray-800">
-            24 New Street, Los Angeles
+        <div className="flex items-center justify-between py-2 border-b border-gray-100">
+          <p className="text-gray-800 font-medium text-base">
+            Contact Number :
           </p>
+          <p className="text-gray-500 text-sm">+1 345 824 9384</p>
         </div>
-        <div>
-          <p className="text-gray-500">Locality :</p>
-          <p className="font-medium text-gray-800">Downtown</p>
+        <div className="flex items-center justify-between py-2 border-b border-gray-100">
+          <p className="text-gray-800 font-medium text-base">Address :</p>
+          <p className="text-gray-500 text-sm">24 New Street, Los Angeles</p>
         </div>
-        <div>
-          <p className="text-gray-500">Notes :</p>
-          <p className="font-medium text-gray-800">
-            Water pressure too low last visit
-          </p>
+        <div className="flex items-center justify-between py-2 border-b border-gray-100">
+          <p className="text-gray-800 font-medium text-base">Locality :</p>
+          <p className="text-gray-500 text-sm">Downtown</p>
         </div>
-        <div>
-          <p className="text-gray-500">Pin Location :</p>
-          <button className="mt-2 flex items-center gap-2 px-4 py-2 border border-red-800 text-red-800 rounded-lg hover:bg-red-50 transition-colors">
+        <div className="flex items-center justify-between py-2 border-b border-gray-100">
+          <p className="text-gray-800 font-medium text-base">Notes :</p>
+          <p className="text-gray-500 text-sm">Water pressure low last visit</p>
+        </div>
+        <div className="flex items-center justify-between py-2">
+          <p className="text-gray-800 font-medium text-base">Pin Location :</p>
+          <button className="flex items-center gap-2 px-3 py-1.5 bg-[#FF6F001A] text-gray-600 rounded-lg hover:bg-orange-100 transition-colors">
             <MapPin className="w-4 h-4" />
             <span className="text-sm font-medium">Map</span>
           </button>
