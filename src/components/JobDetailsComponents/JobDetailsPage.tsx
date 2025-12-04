@@ -23,13 +23,16 @@ const JobDetailsPage = ({ jobId }: JobDetailsPageProps) => {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <button
-          onClick={() => router.back()}
-          className="flex items-center gap-2 text-gray-600 hover:text-gray-800"
-        >
-          <ArrowLeft className="w-5 h-5" />
-          <span className="text-lg font-medium">Job Details</span>
-        </button>
+        <div className="flex gap-2">
+          <button
+            onClick={() => router.back()}
+            className="flex cursor-pointer items-center font-bold gap-2 text-gray-800 hover:text-gray-900"
+          >
+            <ArrowLeft className="w-6 h-6" />
+          </button>
+          <span className="text-2xl font-bold">Job Details</span>
+        </div>
+
         <Button className="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-medium px-6">
           Pending
         </Button>
