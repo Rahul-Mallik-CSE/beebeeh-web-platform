@@ -40,7 +40,7 @@ const ResetPassModal = ({ isOpen, onClose, onUpdate }: ResetPassModalProps) => {
         <DialogHeader>
           {/* Logo Dots */}
           <div className="flex gap-2 mb-2">
-            <div className="w-3 h-3 rounded-full bg-red-800"></div>
+            <div className="w-9 h-3 rounded-full bg-red-800"></div>
             <div className="w-3 h-3 rounded-full bg-red-800"></div>
             <div className="w-3 h-3 rounded-full bg-red-800"></div>
             <div className="w-3 h-3 rounded-full bg-red-800"></div>
