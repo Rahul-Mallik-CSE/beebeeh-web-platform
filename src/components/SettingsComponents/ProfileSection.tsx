@@ -6,6 +6,7 @@ import { Pencil, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import ProfileEditModal from "./ProfileEditModal";
+import ResetPassModal from "./ResetPassModal";
 
 const ProfileSection = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +18,7 @@ const ProfileSection = () => {
     password: "************",
   });
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isResetPassModalOpen, setIsResetPassModalOpen] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -41,7 +43,12 @@ const ProfileSection = () => {
   };
 
   const handleChangePassword = () => {
-    console.log("Change password clicked");
+    setIsResetPassModalOpen(true);
+  };
+
+  const handleUpdatePassword = (newPassword: string) => {
+    console.log("Password updated:", newPassword);
+    // Add your password update logic here
   };
 
   return (
@@ -182,6 +189,13 @@ const ProfileSection = () => {
           address: formData.address,
         }}
         onSave={handleSaveChanges}
+      />
+
+      {/* Reset Password Modal */}
+      <ResetPassModal
+        isOpen={isResetPassModalOpen}
+        onClose={() => setIsResetPassModalOpen(false)}
+        onUpdate={handleUpdatePassword}
       />
     </div>
   );
