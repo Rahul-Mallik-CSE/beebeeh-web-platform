@@ -120,7 +120,12 @@ export default function DashboardSidebar() {
                 href={item.href}
                 icon={item.icon}
                 label={item.label}
-                active={pathname === item.href || pathname === item.href + "/"}
+                active={
+                  !!(
+                    pathname === item.href ||
+                    pathname?.startsWith(item.href + "/")
+                  )
+                }
                 collapsed={isCollapsed}
               />
             ))}
