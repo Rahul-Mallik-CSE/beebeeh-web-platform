@@ -12,7 +12,7 @@ const TodaysJobsTableSection = () => {
   const handleAction = (job: Job) => {
     // Remove # from job ID for URL
     const jobId = job.id.replace("#", "");
-    router.push(`/all-jobs/${jobId}`);
+    router.push(`/todays-jobs/${jobId}`);
   };
 
   return (
