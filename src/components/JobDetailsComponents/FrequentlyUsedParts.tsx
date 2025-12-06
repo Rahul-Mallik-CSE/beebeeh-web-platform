@@ -11,15 +11,20 @@ import {
 
 const FrequentlyUsedParts = () => {
   const parts = [
-    { step: "O-Ring", partCode: "CF-001", stock: "High", stockRequired: 1 },
+    { partName: "O-Ring", partCode: "CF-010", stock: "High", stockRequired: 1 },
     {
-      step: "Sediment filter",
+      partName: "Sediment filter",
       partCode: "CF-050",
       stock: "High",
-      stockRequired: 3,
+      stockRequired: 5,
     },
-    { step: "O-Ring", partCode: "CF-001", stock: "Medium", stockRequired: 1 },
-    { step: "O-Ring", partCode: "CF-001", stock: "Low", stockRequired: 1 },
+    {
+      partName: "O-Ring",
+      partCode: "OR-112",
+      stock: "Medium",
+      stockRequired: 1,
+    },
+    { partName: "O-Ring", partCode: "CF-010", stock: "High", stockRequired: 1 },
   ];
 
   const getStockColor = (stock: string) => {
@@ -36,22 +41,22 @@ const FrequentlyUsedParts = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl p-6 border border-gray-200">
-      <h3 className="text-lg font-semibold text-gray-800 mb-4">
+    <div className="bg-white">
+      <h3 className="text-lg font-semibold text-gray-800 mb-3">
         Frequently Used Parts:
       </h3>
-      <div className="overflow-hidden rounded-lg border border-gray-200">
+      <div className="overflow-hidden rounded-2xl border border-gray-200">
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F4F9] hover:bg-[#F1F4F9]">
+            <TableRow className="bg-gray-50 hover:bg-gray-50">
               <TableHead className="font-semibold text-gray-700">
-                Step
+                Part Name
               </TableHead>
               <TableHead className="font-semibold text-gray-700">
                 Part Code
               </TableHead>
               <TableHead className="font-semibold text-gray-700">
-                Stock
+                Part Code
               </TableHead>
               <TableHead className="font-semibold text-gray-700">
                 Stock Required
@@ -61,7 +66,7 @@ const FrequentlyUsedParts = () => {
           <TableBody>
             {parts.map((part, index) => (
               <TableRow key={index}>
-                <TableCell className="text-gray-700">{part.step}</TableCell>
+                <TableCell className="text-gray-700">{part.partName}</TableCell>
                 <TableCell className="text-gray-700">{part.partCode}</TableCell>
                 <TableCell className={getStockColor(part.stock)}>
                   {part.stock}
