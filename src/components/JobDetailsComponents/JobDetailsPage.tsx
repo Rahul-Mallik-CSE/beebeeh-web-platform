@@ -59,11 +59,11 @@ const JobDetailsPage = ({ jobId }: JobDetailsPageProps) => {
       <div className="flex justify-center gap-4 pt-6">
         <Button
           variant="outline"
-          className="px-8 py-6 text-red-800 border-red-800 hover:bg-red-50"
+          className="px-8 py-4 text-red-800 border-red-800 hover:bg-red-50"
         >
           Cancel Job
         </Button>
-        <Button className="px-8 py-6 bg-red-800 hover:bg-red-700 text-white">
+        <Button className="px-8 py-4 bg-red-800 hover:bg-red-700 text-white">
           Start Job
         </Button>
       </div>
