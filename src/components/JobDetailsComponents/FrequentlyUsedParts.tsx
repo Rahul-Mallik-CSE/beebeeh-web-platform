@@ -8,6 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const FrequentlyUsedParts = () => {
   const parts = [
@@ -45,39 +46,45 @@ const FrequentlyUsedParts = () => {
       <h3 className="text-lg font-semibold text-gray-800 mb-3">
         Frequently Used Parts:
       </h3>
-      <div className="overflow-hidden rounded-2xl border border-gray-200">
-        <Table>
-          <TableHeader>
-            <TableRow className="bg-gray-50 hover:bg-gray-50">
-              <TableHead className="font-semibold text-gray-700">
-                Part Name
-              </TableHead>
-              <TableHead className="font-semibold text-gray-700">
-                Part Code
-              </TableHead>
-              <TableHead className="font-semibold text-gray-700">
-                Part Code
-              </TableHead>
-              <TableHead className="font-semibold text-gray-700">
-                Stock Required
-              </TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {parts.map((part, index) => (
-              <TableRow key={index}>
-                <TableCell className="text-gray-700">{part.partName}</TableCell>
-                <TableCell className="text-gray-700">{part.partCode}</TableCell>
-                <TableCell className={getStockColor(part.stock)}>
-                  {part.stock}
-                </TableCell>
-                <TableCell className="text-gray-700">
-                  {part.stockRequired}
-                </TableCell>
+      <div className="rounded-2xl border border-gray-200">
+        <ScrollArea className="h-[190px] rounded-2xl">
+          <Table>
+            <TableHeader>
+              <TableRow className="bg-gray-50 hover:bg-gray-50">
+                <TableHead className="font-semibold text-gray-700">
+                  Part Name
+                </TableHead>
+                <TableHead className="font-semibold text-gray-700">
+                  Part Code
+                </TableHead>
+                <TableHead className="font-semibold text-gray-700">
+                  Part Code
+                </TableHead>
+                <TableHead className="font-semibold text-gray-700">
+                  Stock Required
+                </TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {parts.map((part, index) => (
+                <TableRow key={index}>
+                  <TableCell className="text-gray-700">
+                    {part.partName}
+                  </TableCell>
+                  <TableCell className="text-gray-700">
+                    {part.partCode}
+                  </TableCell>
+                  <TableCell className={getStockColor(part.stock)}>
+                    {part.stock}
+                  </TableCell>
+                  <TableCell className="text-gray-700">
+                    {part.stockRequired}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </ScrollArea>
       </div>
     </div>
   );
