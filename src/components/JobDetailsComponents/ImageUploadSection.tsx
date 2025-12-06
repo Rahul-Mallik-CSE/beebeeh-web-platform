@@ -34,22 +34,24 @@ const UploadArea: React.FC<UploadAreaProps> = ({
   onDragOver,
   onRemove,
 }) => (
-  <div className="space-y-4">
-    <p className="text-base font-medium text-gray-800">
+  <div className="space-y-4 min-h-[326px]">
+    <p className="text-base font-bold text-gray-800">
       {type === "before" ? "Before Image" : "After Image"}
     </p>
     <div
-      className="border-2 border-dashed border-gray-300 rounded-xl p-8 flex flex-col items-center justify-center hover:border-blue-400 transition-colors cursor-pointer bg-gray-50"
+      className="border-2 border-dashed border-gray-300 rounded-xl p-8 flex flex-col items-center justify-center hover:border-blue-400 transition-colors cursor-pointer "
       onDrop={(e) => onDrop(e, type)}
       onDragOver={onDragOver}
       onClick={() => document.getElementById(`file-${type}`)?.click()}
     >
-      <CloudUpload className="w-12 h-12 text-blue-500 mb-3" />
-      <p className="text-sm text-gray-700">
+      <CloudUpload className="w-12 h-14 text-blue-500 mb-3" />
+      <p className="text-base text-gray-700">
         Drag your file(s) or{" "}
         <span className="text-blue-600 font-medium">browse</span>
       </p>
-      <p className="text-xs text-gray-400 mt-2">Max 10 MB files are allowed</p>
+      <p className="text-base text-gray-400 mt-2">
+        Max 10 MB files are allowed
+      </p>
       <input
         id={`file-${type}`}
         type="file"
@@ -196,7 +198,7 @@ const ImageUploadSection = () => {
         </p>
       </div>
       <div className="border border-gray-200 rounded-2xl p-6">
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 gap-6 ">
           <UploadArea
             type="before"
             images={beforeImages}
