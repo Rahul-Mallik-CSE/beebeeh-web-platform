@@ -7,6 +7,21 @@ import Image from "next/image";
 const CustomerSignatureSection = () => {
   const [signatureImage, setSignatureImage] = useState<string | null>(null);
 
+  const handleSignatureUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setSignatureImage(event.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleCollectClick = () => {
+    document.getElementById("signature-upload")?.click();
+  };
+
   return (
     <div className="bg-white">
       <h3 className="text-lg font-semibold text-gray-800 mb-3">
@@ -32,7 +47,13 @@ const CustomerSignatureSection = () => {
               <p className="text-gray-800 font-medium text-base">
                 Signature Status :
               </p>
-              <p className="text-teal-500 font-medium text-sm">Complete</p>
+              <p
+                className={`font-medium text-sm ${
+                  signatureImage ? "text-teal-500" : "text-red-500"
+                }`}
+              >
+                {signatureImage ? "Complete" : "Incomplete"}
+              </p>
             </div>
           </div>
 
@@ -52,7 +73,17 @@ const CustomerSignatureSection = () => {
               )}
             </div>
             <div className="border border-black w-full"></div>
-            <Button className="w-full bg-[#5C3D2E] hover:bg-[#4A2F22] text-white rounded-lg">
+            <input
+              id="signature-upload"
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={handleSignatureUpload}
+            />
+            <Button
+              onClick={handleCollectClick}
+              className="w-full bg-[#5C3D2E] hover:bg-[#4A2F22] text-white rounded-lg"
+            >
               Collect
             </Button>
           </div>
