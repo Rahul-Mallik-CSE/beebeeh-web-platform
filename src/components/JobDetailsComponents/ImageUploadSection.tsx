@@ -67,14 +67,24 @@ const UploadArea: React.FC<UploadAreaProps> = ({
             key={file.id}
             className="border border-gray-200 rounded-lg p-3 flex items-center gap-3 bg-white"
           >
-            <div className="w-10 h-10 bg-gray-100 rounded flex items-center justify-center shrink-0">
-              <Image
-                src="/logo.png"
-                alt="preview"
-                width={40}
-                height={40}
-                className="rounded object-cover"
-              />
+            <div className="w-10 h-10 bg-gray-100 rounded flex items-center justify-center shrink-0 overflow-hidden">
+              {file.preview ? (
+                <Image
+                  src={file.preview}
+                  alt="preview"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-cover rounded"
+                />
+              ) : (
+                <Image
+                  src="/logo.png"
+                  alt="preview"
+                  width={40}
+                  height={40}
+                  className="rounded object-cover"
+                />
+              )}
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-gray-700 truncate">
@@ -112,17 +122,26 @@ const ImageUploadSection = () => {
   ) => {
     const files = e.target.files;
     if (files) {
-      const newFiles: UploadedFile[] = Array.from(files).map((file, index) => ({
-        id: Date.now() + index,
-        name: file.name,
-        size: `${Math.round(file.size / 1024)}kb`,
-      }));
+      const newFiles: UploadedFile[] = [];
 
-      if (type === "before") {
-        setBeforeImages([...beforeImages, ...newFiles]);
-      } else {
-        setAfterImages([...afterImages, ...newFiles]);
-      }
+      Array.from(files).forEach((file, index) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const newFile: UploadedFile = {
+            id: Date.now() + index,
+            name: file.name,
+            size: `${Math.round(file.size / 1024)}kb`,
+            preview: event.target?.result as string,
+          };
+
+          if (type === "before") {
+            setBeforeImages((prev) => [...prev, newFile]);
+          } else {
+            setAfterImages((prev) => [...prev, newFile]);
+          }
+        };
+        reader.readAsDataURL(file);
+      });
     }
   };
 
@@ -133,17 +152,24 @@ const ImageUploadSection = () => {
     e.preventDefault();
     const files = e.dataTransfer.files;
     if (files) {
-      const newFiles: UploadedFile[] = Array.from(files).map((file, index) => ({
-        id: Date.now() + index,
-        name: file.name,
-        size: `${Math.round(file.size / 1024)}kb`,
-      }));
+      Array.from(files).forEach((file, index) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const newFile: UploadedFile = {
+            id: Date.now() + index,
+            name: file.name,
+            size: `${Math.round(file.size / 1024)}kb`,
+            preview: event.target?.result as string,
+          };
 
-      if (type === "before") {
-        setBeforeImages([...beforeImages, ...newFiles]);
-      } else {
-        setAfterImages([...afterImages, ...newFiles]);
-      }
+          if (type === "before") {
+            setBeforeImages((prev) => [...prev, newFile]);
+          } else {
+            setAfterImages((prev) => [...prev, newFile]);
+          }
+        };
+        reader.readAsDataURL(file);
+      });
     }
   };
 
