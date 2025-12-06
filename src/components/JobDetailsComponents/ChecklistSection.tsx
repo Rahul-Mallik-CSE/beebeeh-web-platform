@@ -10,33 +10,41 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const ChecklistSection = () => {
   const [checklist, setChecklist] = useState([
     {
       id: 1,
-      step: "Check water inlet",
-      partCode: "",
+      step: 1,
+      partCode: "Check water inlet",
       status: "Done",
       action: true,
     },
     {
       id: 2,
-      step: "Install main filter",
-      partCode: "",
-      status: "Doing",
+      step: 2,
+      partCode: "Install main filter",
+      status: "Done",
       action: false,
     },
     {
       id: 3,
-      step: "Install sediment filter",
-      partCode: "",
+      step: 3,
+      partCode: "Install sediment filter",
       status: "Cancel",
       action: false,
     },
     {
       id: 4,
-      step: "",
+      step: 4,
+      partCode: "Test water flow",
+      status: "Pending",
+      action: false,
+    },
+    {
+      id: 5,
+      step: 4,
       partCode: "Clean area",
       status: "Pending",
       action: false,
@@ -46,69 +54,69 @@ const ChecklistSection = () => {
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
       case "done":
-        return "bg-green-100 text-green-700";
+        return "text-teal-500";
       case "doing":
-        return "bg-cyan-100 text-cyan-700";
+        return "text-cyan-500";
       case "cancel":
-        return "bg-gray-100 text-gray-700";
+        return "text-red-600";
       case "pending":
-        return "bg-yellow-100 text-yellow-700";
+        return "text-yellow-500";
       default:
-        return "bg-gray-100 text-gray-700";
+        return "text-gray-600";
     }
   };
 
   return (
-    <div className="bg-white rounded-2xl p-6 border border-gray-200">
-      <h3 className="text-lg font-semibold text-gray-800 mb-4">
+    <div className="bg-white">
+      <h3 className="text-lg font-semibold text-gray-800 mb-3">
         Checklist Section:
       </h3>
-      <div className="overflow-hidden rounded-lg border border-gray-200">
-        <Table>
-          <TableHeader>
-            <TableRow className="bg-[#F1F4F9] hover:bg-[#F1F4F9]">
-              <TableHead className="font-semibold text-gray-700">
-                Step
-              </TableHead>
-              <TableHead className="font-semibold text-gray-700">
-                Part Code
-              </TableHead>
-              <TableHead className="font-semibold text-gray-700">
-                Status
-              </TableHead>
-              <TableHead className="font-semibold text-gray-700 text-center">
-                Action
-              </TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {checklist.map((item) => (
-              <TableRow key={item.id}>
-                <TableCell className="text-gray-700">{item.step}</TableCell>
-                <TableCell className="text-gray-700">{item.partCode}</TableCell>
-                <TableCell>
-                  <span
-                    className={`px-3 py-1 rounded-md text-sm font-medium ${getStatusColor(
-                      item.status
-                    )}`}
+      <div className="rounded-2xl border border-gray-200">
+        <ScrollArea className="h-[200px] rounded-2xl">
+          <Table>
+            <TableHeader>
+              <TableRow className="bg-gray-50 hover:bg-gray-50">
+                <TableHead className="font-semibold text-gray-700">
+                  Step
+                </TableHead>
+                <TableHead className="font-semibold text-gray-700">
+                  Part Code
+                </TableHead>
+                <TableHead className="font-semibold text-gray-700">
+                  Status
+                </TableHead>
+                <TableHead className="font-semibold text-gray-700 text-center">
+                  Action
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {checklist.map((item) => (
+                <TableRow key={item.id}>
+                  <TableCell className="text-gray-700">{item.step}</TableCell>
+                  <TableCell className="text-gray-700">
+                    {item.partCode}
+                  </TableCell>
+                  <TableCell
+                    className={`font-medium ${getStatusColor(item.status)}`}
                   >
                     {item.status}
-                  </span>
-                </TableCell>
-                <TableCell>
-                  <div className="flex justify-center gap-2">
-                    <button className="w-6 h-6 rounded flex items-center justify-center bg-green-500 hover:bg-green-600 text-white">
-                      <Check className="w-4 h-4" />
-                    </button>
-                    <button className="w-6 h-6 rounded flex items-center justify-center bg-red-500 hover:bg-red-600 text-white">
-                      <X className="w-4 h-4" />
-                    </button>
-                  </div>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+                  </TableCell>
+                  <TableCell>
+                    <div className="flex justify-center gap-2">
+                      <button className="w-6 h-6 rounded flex items-center justify-center hover:bg-green-50 text-green-500">
+                        <Check className="w-5 h-5" />
+                      </button>
+                      <button className="w-6 h-6 rounded flex items-center justify-center hover:bg-red-50 text-red-500">
+                        <X className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </ScrollArea>
       </div>
     </div>
   );
