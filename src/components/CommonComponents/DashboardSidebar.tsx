@@ -69,6 +69,8 @@ export default function DashboardSidebar() {
     // Example: router.push('/login');
   };
 
+  if (pathname == "/sign-in" || pathname == "/sign-up") return null;
+
   return (
     <>
       {/* mobile menu button */}
