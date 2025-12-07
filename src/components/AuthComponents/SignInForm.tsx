@@ -43,9 +43,12 @@ export const SignInForm = () => {
           <label className="block text-base font-medium text-[#9E2729]">
             Password
           </label>
-          <a href="#" className="text-base text-[#9E2729] hover:underline">
+          <Link
+            href="/reset-pass"
+            className="text-base text-[#9E2729] hover:underline"
+          >
             Forgot Password?
-          </a>
+          </Link>
         </div>
         <div className="relative">
           <input
