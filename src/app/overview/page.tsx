@@ -1,6 +1,7 @@
 /** @format */
 
 import OverviewTableSection from "@/components/OverviewComponents/OverviewTableSection";
+import StatsSection from "@/components/OverviewComponents/StatsSection";
 import React from "react";
 
 const OverviewPage = () => {
@@ -9,6 +10,8 @@ const OverviewPage = () => {
       <div className=" max-w-[2500px] rounded-2xl mx-auto space-y-4">
         {/* table section */}
         <div className="bg-white border border-gray-200 rounded-2xl p-6">
+          {/* Stats section */}
+          <StatsSection />
           <OverviewTableSection />
         </div>
       </div>
