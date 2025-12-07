@@ -16,6 +16,7 @@ import { usePathname } from "next/navigation";
 const NavBar = () => {
   const pathname = usePathname();
   if (
+    pathname == "/" ||
     pathname == "/sign-in" ||
     pathname == "/sign-up" ||
     pathname == "/create-new-pass" ||

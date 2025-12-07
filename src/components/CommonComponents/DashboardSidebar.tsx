@@ -70,6 +70,7 @@ export default function DashboardSidebar() {
   };
 
   if (
+    pathname == "/" ||
     pathname == "/sign-in" ||
     pathname == "/sign-up" ||
     pathname == "/create-new-pass" ||
