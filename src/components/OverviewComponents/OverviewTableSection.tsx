@@ -16,13 +16,15 @@ const OverviewTableSection = () => {
   };
 
   return (
-    <CustomTable
-      data={jobsData}
-      columns={columns}
-      onAction={handleAction}
-      title="Recent Jobs"
-      additionalCount={5}
-    />
+    <div className="bg-white border border-gray-200 rounded-2xl py-6 px-8">
+      <CustomTable
+        data={jobsData}
+        columns={columns}
+        onAction={handleAction}
+        title="Recent Jobs"
+        additionalCount={5}
+      />
+    </div>
   );
 };
 
