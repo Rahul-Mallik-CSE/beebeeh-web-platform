@@ -1,10 +1,16 @@
 /** @format */
 
 "use client";
+import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import Link from "next/link";
 
 const ResetPassForm = () => {
+    const router = useRouter();
+    const handleSendOtp = () => {
+      router.push("/verify-otp");
+    };
+
   return (
     <div className="relative z-10 w-full max-w-lg bg-white rounded-2xl shadow-lg py-8 px-6">
       {/* Logo dots */}
@@ -36,7 +42,7 @@ const ResetPassForm = () => {
       </div>
 
       {/* Send OTP Button */}
-      <Button className="w-full bg-[#9E2729] hover:bg-[#7A3333] text-white font-semibold py-3 rounded-lg mb-4 transition-colors">
+      <Button onClick={handleSendOtp} className="w-full bg-[#9E2729] hover:bg-[#7A3333] text-white font-semibold py-3 rounded-lg mb-4 transition-colors">
         Send OTP
       </Button>
 

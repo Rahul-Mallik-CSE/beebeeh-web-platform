@@ -4,12 +4,10 @@
 import { useState, useRef } from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
-const VerifyEmailForm = () => {
+const VerifyOtpForm = () => {
   const [otp, setOtp] = useState<string[]>(["", "", "", "", "", ""]);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-  const router = useRouter();
 
   const handleChange = (index: number, value: string) => {
     if (value.length > 1) return;
@@ -54,10 +52,6 @@ const VerifyEmailForm = () => {
       inputRefs.current[5]?.focus();
     }
   };
-  const handleEmailVerify = () => {
-    // Here you would typically validate the OTP and make an API call
-    router.push("/sign-in");
-  };
 
   return (
     <div className="relative z-10 w-full max-w-lg bg-white rounded-2xl shadow-lg py-8 px-6">
@@ -71,7 +65,7 @@ const VerifyEmailForm = () => {
 
       {/* Welcome Text */}
       <h1 className="text-4xl font-bold text-[#9E2729] mb-1">
-        Verify with Email
+        Verify with OTP
       </h1>
       <p className="text-base text-[#9E2729] mb-8">
         Enter the OTP sent to your email
@@ -94,10 +88,7 @@ const VerifyEmailForm = () => {
       </div>
 
       {/* Verify Button */}
-      <Button
-        onClick={handleEmailVerify}
-        className="w-full bg-[#9E2729] hover:bg-[#7A3333] text-white font-semibold py-3 rounded-lg mb-4 transition-colors"
-      >
+      <Button className="w-full bg-[#9E2729] hover:bg-[#7A3333] text-white font-semibold py-3 rounded-lg mb-4 transition-colors">
         Verify
       </Button>
 
@@ -112,4 +103,4 @@ const VerifyEmailForm = () => {
   );
 };
 
-export default VerifyEmailForm;
+export default VerifyOtpForm;
