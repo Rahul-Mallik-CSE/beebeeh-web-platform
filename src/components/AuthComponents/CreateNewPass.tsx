@@ -4,10 +4,16 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
 
 const CreateNewPass = () => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const handleUpdatePass = () => {
+    router.push("/sign-in");
+  };
 
   return (
     <div className="relative z-10 w-full max-w-lg bg-white rounded-2xl shadow-lg py-8 px-6">
@@ -80,7 +86,10 @@ const CreateNewPass = () => {
       </div>
 
       {/* Update Password Button */}
-      <Button className="w-full bg-[#9E2729] hover:bg-[#7A3333] text-white font-semibold py-3 rounded-lg transition-colors">
+      <Button
+        onClick={handleUpdatePass}
+        className="w-full bg-[#9E2729] hover:bg-[#7A3333] text-white font-semibold py-3 rounded-lg transition-colors"
+      >
         Update Password
       </Button>
     </div>
