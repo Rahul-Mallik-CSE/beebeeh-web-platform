@@ -5,10 +5,18 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const router = useRouter();
+
+  const handleSignUp = () => {
+    // Here you would typically validate the form and make an API call
+    // For now, we'll just navigate to the verify-email page
+    router.push("/verify-email");
+  };
 
   return (
     <div className="relative z-10 w-full max-w-lg bg-white rounded-2xl shadow-lg py-8 px-6">
@@ -24,11 +32,11 @@ const SignUpForm = () => {
       <h1 className="text-4xl font-bold text-[#9E2729] mb-1">
         Create an Account
       </h1>
-      <p className="text-base text-[#9E2729] mb-6">Get started with Beebeeh</p>
+      <p className="text-base text-[#9E2729] mb-2">Get started with Beebeeh</p>
 
       {/* Full Name Input */}
-      <div className="mb-5">
-        <label className="block text-base font-medium text-[#9E2729] mb-2">
+      <div className="mb-2">
+        <label className="block text-base font-medium text-[#9E2729] mb-1">
           Full Name
         </label>
         <input
@@ -39,8 +47,8 @@ const SignUpForm = () => {
       </div>
 
       {/* Email Input */}
-      <div className="mb-5">
-        <label className="block text-base font-medium text-[#9E2729] mb-2">
+      <div className="mb-2">
+        <label className="block text-base font-medium text-[#9E2729] mb-1">
           Email Address
         </label>
         <input
@@ -51,8 +59,8 @@ const SignUpForm = () => {
       </div>
 
       {/* Contact Number Input */}
-      <div className="mb-5">
-        <label className="block text-base font-medium text-[#9E2729] mb-2">
+      <div className="mb-2">
+        <label className="block text-base font-medium text-[#9E2729] mb-1">
           Contact Number
         </label>
         <input
@@ -63,8 +71,8 @@ const SignUpForm = () => {
       </div>
 
       {/* Address Input */}
-      <div className="mb-5">
-        <label className="block text-base font-medium text-[#9E2729] mb-2">
+      <div className="mb-2">
+        <label className="block text-base font-medium text-[#9E2729] mb-1">
           Address
         </label>
         <input
@@ -75,8 +83,8 @@ const SignUpForm = () => {
       </div>
 
       {/* Password Input */}
-      <div className="mb-5">
-        <label className="block text-base font-medium text-[#9E2729] mb-2">
+      <div className="mb-2">
+        <label className="block text-base font-medium text-[#9E2729] mb-1">
           Password
         </label>
         <div className="relative">
@@ -102,7 +110,7 @@ const SignUpForm = () => {
 
       {/* Confirm Password Input */}
       <div className="mb-2">
-        <label className="block text-base font-medium text-[#9E2729] mb-2">
+        <label className="block text-base font-medium text-[#9E2729] mb-1">
           Confirm Password
         </label>
         <div className="relative">
@@ -127,12 +135,15 @@ const SignUpForm = () => {
       </div>
 
       {/* Sign Up Button */}
-      <Button className="w-full bg-[#9E2729] hover:bg-[#7A3333] text-white font-semibold py-3 rounded-lg mt-6 mb-4 transition-colors">
+      <Button
+        onClick={handleSignUp}
+        className="w-full bg-[#9E2729] hover:bg-[#7A3333] text-white font-semibold py-3 rounded-lg mt-6 mb-2 transition-colors"
+      >
         Sign Up
       </Button>
 
       {/* Divider */}
-      <div className="flex items-center gap-3 mb-4">
+      <div className="flex items-center gap-3 mb-2">
         <div className="flex-1 h-px bg-[#E8D5D8]"></div>
         <span className="text-sm text-gray-400">or</span>
         <div className="flex-1 h-px bg-[#E8D5D8]"></div>
@@ -167,7 +178,7 @@ const SignUpForm = () => {
       </Button>
 
       {/* Sign In Link */}
-      <p className="text-center text-sm text-gray-600 mt-6">
+      <p className="text-center text-sm text-gray-600 mt-2">
         Already have an account?{" "}
         <Link
           href="/sign-in"
