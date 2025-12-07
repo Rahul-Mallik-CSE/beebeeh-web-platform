@@ -15,7 +15,15 @@ import { usePathname } from "next/navigation";
 
 const NavBar = () => {
   const pathname = usePathname();
-  if (pathname == "/sign-in" || pathname == "/sign-up") return null;
+  if (
+    pathname == "/sign-in" ||
+    pathname == "/sign-up" ||
+    pathname == "/create-new-pass" ||
+    pathname == "/reset-pass" ||
+    pathname == "/verify-email" ||
+    pathname == "/verify-otp"
+  )
+    return null;
   return (
     <div className="w-full sticky top-0 z-50 px-4">
       <div className=" max-w-[2500px] rounded-2xl mx-auto flex items-center justify-between bg-white border border-gray-200 px-6 py-3">

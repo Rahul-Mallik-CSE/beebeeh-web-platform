@@ -69,7 +69,15 @@ export default function DashboardSidebar() {
     // Example: router.push('/login');
   };
 
-  if (pathname == "/sign-in" || pathname == "/sign-up") return null;
+  if (
+    pathname == "/sign-in" ||
+    pathname == "/sign-up" ||
+    pathname == "/create-new-pass" ||
+    pathname == "/reset-pass" ||
+    pathname == "/verify-email" ||
+    pathname == "/verify-otp"
+  )
+    return null;
 
   return (
     <>

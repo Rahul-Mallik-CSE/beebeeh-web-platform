@@ -6,8 +6,14 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 export const SignInForm = () => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+  const handleSignIn = () => {
+    // Here you would typically handle form submission and authentication
+    router.push("/overview");
+  };
   return (
     <div className="relative z-10 w-full max-w-lg bg-white rounded-2xl shadow-lg py-8 px-6">
       {/* Logo dots */}
@@ -72,7 +78,10 @@ export const SignInForm = () => {
       </div>
 
       {/* Sign In Button */}
-      <Button className="w-full bg-[#9E2729] hover:bg-[#7A3333] text-white font-semibold py-3 rounded-lg mt-6 mb-4 transition-colors">
+      <Button
+        onClick={handleSignIn}
+        className="w-full bg-[#9E2729] hover:bg-[#7A3333] text-white font-semibold py-3 rounded-lg mt-6 mb-4 transition-colors"
+      >
         Sign In
       </Button>
 
