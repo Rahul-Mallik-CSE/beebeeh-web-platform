@@ -1,6 +1,6 @@
 /** @format */
 
-import { Calendar, UserCog, FileText, CheckSquare } from "lucide-react";
+import { CheckSquare } from "lucide-react";
 import { BsFillBookmarkCheckFill } from "react-icons/bs";
 import { Notification } from "@/types/AllTypes";
 import { cn } from "@/lib/utils";
