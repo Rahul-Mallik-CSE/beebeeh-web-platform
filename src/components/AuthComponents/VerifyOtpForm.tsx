@@ -4,10 +4,17 @@
 import { useState, useRef } from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const VerifyOtpForm = () => {
   const [otp, setOtp] = useState<string[]>(["", "", "", "", "", ""]);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const router = useRouter();
+
+  const handleVerifyOtp = () => {
+    // Here you would typically validate the OTP and make an API call
+    router.push("/create-new-pass");
+  };
 
   const handleChange = (index: number, value: string) => {
     if (value.length > 1) return;
@@ -88,7 +95,10 @@ const VerifyOtpForm = () => {
       </div>
 
       {/* Verify Button */}
-      <Button className="w-full bg-[#9E2729] hover:bg-[#7A3333] text-white font-semibold py-3 rounded-lg mb-4 transition-colors">
+      <Button
+        onClick={handleVerifyOtp}
+        className="w-full bg-[#9E2729] hover:bg-[#7A3333] text-white font-semibold py-3 rounded-lg mb-4 transition-colors"
+      >
         Verify
       </Button>
 
