@@ -12,12 +12,17 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { UserCog, Key, LogOut } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
+import LogoutModal from "./LogOutModal";
 
 const NavBar = () => {
   const pathname = usePathname();
   const router = useRouter();
-  const handleLogOut = () => {
-    // Implement your logout logic here
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+
+  const handleLogout = () => {
+    console.log("Logging out...");
+    setIsLogoutModalOpen(false);
     router.push("/sign-in");
   };
   if (
@@ -77,7 +82,7 @@ const NavBar = () => {
                 <span className="text-base">Change Password</span>
               </DropdownMenuItem>
               <DropdownMenuItem
-                onClick={handleLogOut}
+                onClick={() => setIsLogoutModalOpen(true)}
                 className="flex items-center gap-3 px-4 py-3 cursor-pointer"
               >
                 <LogOut className="w-5 h-5 text-red-500" />
@@ -87,6 +92,12 @@ const NavBar = () => {
           </DropdownMenu>
         </div>
       </div>
+
+      <LogoutModal
+        isOpen={isLogoutModalOpen}
+        onClose={() => setIsLogoutModalOpen(false)}
+        onConfirm={handleLogout}
+      />
     </div>
   );
 };

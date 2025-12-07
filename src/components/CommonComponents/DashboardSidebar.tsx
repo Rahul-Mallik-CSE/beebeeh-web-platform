@@ -15,7 +15,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   LayoutGrid,
   Briefcase,
@@ -30,6 +30,7 @@ import LogoutModal from "./LogOutModal";
 export default function DashboardSidebar() {
   const { state } = useSidebar();
   const pathname = usePathname();
+  const router = useRouter();
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
   const isCollapsed = state === "collapsed";
@@ -63,6 +64,7 @@ export default function DashboardSidebar() {
   ];
 
   const handleLogout = () => {
+    router.push("/sign-in");
     // Add your logout logic here (e.g., clear tokens, redirect, etc.)
     console.log("Logging out...");
     setIsLogoutModalOpen(false);
