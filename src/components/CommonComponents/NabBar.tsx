@@ -11,10 +11,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { UserCog, Key, LogOut } from "lucide-react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const NavBar = () => {
   const pathname = usePathname();
+  const router = useRouter();
+  const handleLogOut = () => {
+    // Implement your logout logic here
+    router.push("/sign-in");
+  };
   if (
     pathname == "/" ||
     pathname == "/sign-in" ||
@@ -36,7 +41,10 @@ const NavBar = () => {
         {/* Right side - Search, Select, Notification, Profile */}
         <div className="flex items-center gap-4">
           {/* Notification Bell */}
-          <button className="relative p-2 hover:bg-gray-100 rounded-full transition-colors">
+          <button
+            onClick={() => router.push("/notifications")}
+            className="cursor-pointer relative p-2 hover:bg-gray-100 rounded-full transition-colors"
+          >
             <Bell className="w-5 h-5 text-gray-600" />
             <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
           </button>
@@ -68,7 +76,10 @@ const NavBar = () => {
                 <Key className="w-5 h-5 text-pink-500" />
                 <span className="text-base">Change Password</span>
               </DropdownMenuItem>
-              <DropdownMenuItem className="flex items-center gap-3 px-4 py-3 cursor-pointer">
+              <DropdownMenuItem
+                onClick={handleLogOut}
+                className="flex items-center gap-3 px-4 py-3 cursor-pointer"
+              >
                 <LogOut className="w-5 h-5 text-red-500" />
                 <span className="text-base">Log out</span>
               </DropdownMenuItem>
