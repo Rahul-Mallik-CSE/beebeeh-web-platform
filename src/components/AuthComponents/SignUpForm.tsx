@@ -2,12 +2,14 @@
 
 "use client";
 import { useState } from "react";
-
 import { Eye, EyeOff } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
-export const SignInForm = () => {
+
+const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   return (
     <div className="relative z-10 w-full max-w-lg bg-white rounded-2xl shadow-lg py-8 px-6">
       {/* Logo dots */}
@@ -17,13 +19,24 @@ export const SignInForm = () => {
         <div className="w-4 h-4 rounded-full bg-[#9E2729]"></div>
         <div className="w-4 h-4 rounded-full bg-[#9E2729]"></div>
       </div>
+
       {/* Welcome Text */}
       <h1 className="text-4xl font-bold text-[#9E2729] mb-1">
-        Welcome to Beebeeh
+        Create an Account
       </h1>
-      <p className="text-base text-[#9E2729] mb-6">
-        Sign in to access your Beebeeh dashboard and continue your work.
-      </p>
+      <p className="text-base text-[#9E2729] mb-6">Get started with Beebeeh</p>
+
+      {/* Full Name Input */}
+      <div className="mb-5">
+        <label className="block text-base font-medium text-[#9E2729] mb-2">
+          Full Name
+        </label>
+        <input
+          type="text"
+          placeholder="Enter your full name"
+          className="w-full px-4 py-2 border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
+        />
+      </div>
 
       {/* Email Input */}
       <div className="mb-5">
@@ -37,20 +50,39 @@ export const SignInForm = () => {
         />
       </div>
 
+      {/* Contact Number Input */}
+      <div className="mb-5">
+        <label className="block text-base font-medium text-[#9E2729] mb-2">
+          Contact Number
+        </label>
+        <input
+          type="tel"
+          placeholder="Enter your contact number"
+          className="w-full px-4 py-2 border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
+        />
+      </div>
+
+      {/* Address Input */}
+      <div className="mb-5">
+        <label className="block text-base font-medium text-[#9E2729] mb-2">
+          Address
+        </label>
+        <input
+          type="text"
+          placeholder="Enter your address"
+          className="w-full px-4 py-2 border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
+        />
+      </div>
+
       {/* Password Input */}
-      <div className="mb-2">
-        <div className="flex justify-between items-center mb-2">
-          <label className="block text-base font-medium text-[#9E2729]">
-            Password
-          </label>
-          <a href="#" className="text-base text-[#9E2729] hover:underline">
-            Forgot Password?
-          </a>
-        </div>
+      <div className="mb-5">
+        <label className="block text-base font-medium text-[#9E2729] mb-2">
+          Password
+        </label>
         <div className="relative">
           <input
             type={showPassword ? "text" : "password"}
-            placeholder="••••••••"
+            placeholder="Create a password"
             className="w-full px-4 py-2 border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
           />
           <button
@@ -68,9 +100,35 @@ export const SignInForm = () => {
         </div>
       </div>
 
-      {/* Sign In Button */}
+      {/* Confirm Password Input */}
+      <div className="mb-2">
+        <label className="block text-base font-medium text-[#9E2729] mb-2">
+          Confirm Password
+        </label>
+        <div className="relative">
+          <input
+            type={showConfirmPassword ? "text" : "password"}
+            placeholder="Re-enter password"
+            className="w-full px-4 py-2 border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
+          />
+          <button
+            type="button"
+            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+            aria-label={showConfirmPassword ? "Hide password" : "Show password"}
+          >
+            {showConfirmPassword ? (
+              <EyeOff className="w-5 h-5" />
+            ) : (
+              <Eye className="w-5 h-5" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Sign Up Button */}
       <Button className="w-full bg-[#9E2729] hover:bg-[#7A3333] text-white font-semibold py-3 rounded-lg mt-6 mb-4 transition-colors">
-        Sign In
+        Sign Up
       </Button>
 
       {/* Divider */}
@@ -80,7 +138,7 @@ export const SignInForm = () => {
         <div className="flex-1 h-px bg-[#E8D5D8]"></div>
       </div>
 
-      {/* Google Login */}
+      {/* Google Sign Up */}
       <Button className="w-full border bg-white border-[#E8D5D8] text-gray-700 font-medium py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors">
         <svg
           className="w-5 h-5"
@@ -108,16 +166,18 @@ export const SignInForm = () => {
         Log in with Google
       </Button>
 
-      {/* Sign Up Link */}
+      {/* Sign In Link */}
       <p className="text-center text-sm text-gray-600 mt-6">
-        Don&apos;t have an account?{" "}
+        Already have an account?{" "}
         <Link
-          href="/sign-up"
+          href="/sign-in"
           className="text-[#9E2729] font-semibold hover:underline"
         >
-          Sign Up
+          Sign In
         </Link>
       </p>
     </div>
   );
 };
+
+export default SignUpForm;
