@@ -85,7 +85,7 @@ export default function DashboardSidebar() {
   return (
     <>
       {/* mobile menu button */}
-      <div className="fixed top-4 left-4 z-40 md:hidden">
+      <div className="fixed top-10 bg-gray-200 rounded-sm left-8 z-40 md:hidden">
         <SidebarTrigger />
       </div>
 
