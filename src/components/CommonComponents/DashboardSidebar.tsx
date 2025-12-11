@@ -124,7 +124,7 @@ export default function DashboardSidebar() {
           </div>
           <SidebarMenu
             className={
-              isCollapsed ? "px-2 space-y-4 items-center" : "md:px-6 space-y-4"
+              isCollapsed ? "px-2 space-y-2 items-center" : "md:px-1 space-y-2"
             }
           >
             {navItems.map((item) => (
@@ -197,7 +197,7 @@ function NavItem({
           className={cn(
             collapsed
               ? "flex items-center justify-center px-2 py-3 transition-colors rounded-full w-12 h-12 mx-auto"
-              : "flex items-center gap-3 px-4 py-3 transition-colors rounded-md",
+              : "flex items-center gap-3 px-4 py-5 transition-colors rounded-md",
             active
               ? "bg-red-800 text-white hover:bg-red-700! hover:text-white! font-medium"
               : "bg-transparent text-black hover:bg-red-100!  font-medium"
