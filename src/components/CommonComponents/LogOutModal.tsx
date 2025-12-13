@@ -24,20 +24,20 @@ export default function LogoutModal({
 }: LogoutModalProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md mx-4">
         <DialogHeader>
-          <DialogTitle className="flex justify-center items-center text-2xl font-semibold text-red-500">
-            <LogOut className="mr-2 h-6 w-6" /> Sign Out
+          <DialogTitle className="flex justify-center items-center text-lg sm:text-xl md:text-2xl font-semibold text-red-500">
+            <LogOut className="mr-2 h-5 w-5 sm:h-6 sm:w-6" /> Sign Out
           </DialogTitle>
         </DialogHeader>
 
-        <div className="flex flex-col items-center py-4">
-          <h3 className="mb-6 text-xl font-semibold text-center">
+        <div className="flex flex-col items-center py-3 sm:py-4">
+          <h3 className="mb-4 sm:mb-6 text-base sm:text-lg md:text-xl font-semibold text-center px-2">
             Are you sure you want to{" "}
             <span className="font-bold text-red-500">sign out?</span>
           </h3>
 
-          <div className="flex justify-center gap-4 w-full">
+          <div className="flex justify-center gap-3 sm:gap-4 w-full">
             <Button variant="outline" onClick={onClose} className="w-1/2">
               Cancel
             </Button>

@@ -74,7 +74,7 @@ const CustomTable = <T extends Record<string, any>>({
       return (
         <div
           className={cn(
-            "w-24 px-2  py-1 flex justify-center items-center rounded-md text-sm font-medium",
+            "w-20 sm:w-24 px-1.5 sm:px-2 py-0.5 sm:py-1 flex justify-center items-center rounded-md text-xs sm:text-sm font-medium",
             getStatusColor(value)
           )}
         >
@@ -124,17 +124,19 @@ const CustomTable = <T extends Record<string, any>>({
   };
 
   return (
-    <div className="w-full space-y-4">
+    <div className="w-full space-y-3 sm:space-y-4">
       {/* Header */}
       {title && (
         <div className="flex items-center justify-between">
           {title && (
-            <h2 className="text-3xl font-semibold text-gray-800">{title}</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800">
+              {title}
+            </h2>
           )}
         </div>
       )}
 
-      <div className="rounded-lg overflow-hidden">
+      <div className="rounded-lg overflow-hidden overflow-x-auto">
         <Table className="border-none">
           <TableHeader>
             <TableRow className="bg-[#F1F4F9] hover:bg-[#F1F4F9] border-none">
@@ -142,7 +144,7 @@ const CustomTable = <T extends Record<string, any>>({
                 <TableHead
                   key={index}
                   className={cn(
-                    "font-semibold text-gray-700 text-sm py-3",
+                    "font-semibold text-gray-700 text-xs sm:text-sm py-2 sm:py-3 whitespace-nowrap",
                     column.className
                   )}
                 >
@@ -150,7 +152,7 @@ const CustomTable = <T extends Record<string, any>>({
                 </TableHead>
               ))}
               {onAction && (
-                <TableHead className="font-semibold text-gray-700 text-sm text-right">
+                <TableHead className="font-semibold text-gray-700 text-xs sm:text-sm text-right whitespace-nowrap">
                   Action
                 </TableHead>
               )}
@@ -165,7 +167,10 @@ const CustomTable = <T extends Record<string, any>>({
                 {columns.map((column, colIndex) => (
                   <TableCell
                     key={colIndex}
-                    className={cn("text-gray-700 py-5", column.className)}
+                    className={cn(
+                      "text-gray-700 text-xs sm:text-sm py-3 sm:py-5 whitespace-nowrap",
+                      column.className
+                    )}
                   >
                     {renderCell(row, column)}
                   </TableCell>
