@@ -12,7 +12,7 @@ const StatsSection = () => {
       id: 1,
       title: "Today's Jobs",
       value: "10293",
-      icon: <FaChartLine className="w-7 h-7 text-green-600" />,
+      icon: <FaChartLine className="w-6 h-6 sm:w-7 sm:h-7 text-green-600" />,
       trend: "1.3% Up from past week",
       trendDirection: "up" as const,
       iconBgColor: "bg-green-50",
@@ -21,7 +21,9 @@ const StatsSection = () => {
       id: 2,
       title: "Completed Work",
       value: "10293",
-      icon: <PiSunHorizonFill className="w-7 h-7 text-purple-600" />,
+      icon: (
+        <PiSunHorizonFill className="w-6 h-6 sm:w-7 sm:h-7 text-purple-600" />
+      ),
       trend: "4.3% Down from yesterday",
       trendDirection: "down" as const,
       iconBgColor: "bg-purple-100",
@@ -30,7 +32,9 @@ const StatsSection = () => {
       id: 3,
       title: "Pending Jobs",
       value: "10293",
-      icon: <FaClockRotateLeft className="w-7 h-7 text-[#FEC12C]" />,
+      icon: (
+        <FaClockRotateLeft className="w-6 h-6 sm:w-7 sm:h-7 text-[#FEC12C]" />
+      ),
       trend: "1.3% Up from past week",
       trendDirection: "up" as const,
       iconBgColor: "bg-[#FEC12C26]",
@@ -39,7 +43,7 @@ const StatsSection = () => {
       id: 4,
       title: "Total This Month",
       value: "4",
-      icon: <TbSettingsPlus className="w-7 h-7 text-red-600" />,
+      icon: <TbSettingsPlus className="w-6 h-6 sm:w-7 sm:h-7 text-red-600" />,
       trend: "1.3% Up from past week",
       trendDirection: "up" as const,
       iconBgColor: "bg-red-100",
@@ -47,7 +51,7 @@ const StatsSection = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
       {statsData.map((stat) => (
         <StatsCard
           key={stat.id}

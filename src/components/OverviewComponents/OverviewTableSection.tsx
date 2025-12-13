@@ -16,7 +16,7 @@ const OverviewTableSection = () => {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl py-6 px-8">
+    <div className="bg-white border border-gray-200 rounded-2xl py-4 px-3 sm:py-6 sm:px-6 md:px-8">
       <CustomTable
         data={jobsData}
         columns={columns}
