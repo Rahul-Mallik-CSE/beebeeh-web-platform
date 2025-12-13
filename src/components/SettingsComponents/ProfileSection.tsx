@@ -66,7 +66,7 @@ const ProfileSection = () => {
             />
           </div>
           <div className="min-w-0">
-            <h2 className="text-base sm:text-lg md:text-xl font-semibold text-gray-800 truncate">
+            <h2 className="text-base sm:text-lg md:text-xl font-semibold text-gray-800 flex-wrap">
               {formData.fullName}
             </h2>
             <p className="text-gray-500 text-xs sm:text-sm">{formData.role}</p>
