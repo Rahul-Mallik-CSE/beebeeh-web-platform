@@ -19,79 +19,81 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="relative z-10 w-full max-w-lg bg-white rounded-2xl shadow-lg py-8 px-6">
+    <div className="relative z-10 w-full max-w-sm sm:max-w-lg bg-white rounded-2xl shadow-lg py-6 px-4 sm:py-8 sm:px-6">
       {/* Logo dots */}
-      <div className="flex gap-2 mb-6">
-        <div className="w-8 h-4 rounded-full bg-[#9E2729]"></div>
-        <div className="w-4 h-4 rounded-full bg-[#9E2729]"></div>
-        <div className="w-4 h-4 rounded-full bg-[#9E2729]"></div>
-        <div className="w-4 h-4 rounded-full bg-[#9E2729]"></div>
+      <div className="flex gap-1.5 sm:gap-2 mb-4 sm:mb-6">
+        <div className="w-6 h-3 sm:w-8 sm:h-4 rounded-full bg-[#9E2729]"></div>
+        <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#9E2729]"></div>
+        <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#9E2729]"></div>
+        <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#9E2729]"></div>
       </div>
 
       {/* Welcome Text */}
-      <h1 className="text-4xl font-bold text-[#9E2729] mb-1">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#9E2729] mb-1">
         Create an Account
       </h1>
-      <p className="text-base text-[#9E2729] mb-2">Get started with Beebeeh</p>
+      <p className="text-sm sm:text-base text-[#9E2729] mb-2">
+        Get started with Beebeeh
+      </p>
 
       {/* Full Name Input */}
       <div className="mb-2">
-        <label className="block text-base font-medium text-[#9E2729] mb-1">
+        <label className="block text-sm sm:text-base font-medium text-[#9E2729] mb-1">
           Full Name
         </label>
         <input
           type="text"
           placeholder="Enter your full name"
-          className="w-full px-4 py-2 border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
+          className="w-full px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
         />
       </div>
 
       {/* Email Input */}
       <div className="mb-2">
-        <label className="block text-base font-medium text-[#9E2729] mb-1">
+        <label className="block text-sm sm:text-base font-medium text-[#9E2729] mb-1">
           Email Address
         </label>
         <input
           type="email"
           placeholder="Enter your email address"
-          className="w-full px-4 py-2 border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
+          className="w-full px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
         />
       </div>
 
       {/* Contact Number Input */}
       <div className="mb-2">
-        <label className="block text-base font-medium text-[#9E2729] mb-1">
+        <label className="block text-sm sm:text-base font-medium text-[#9E2729] mb-1">
           Contact Number
         </label>
         <input
           type="tel"
           placeholder="Enter your contact number"
-          className="w-full px-4 py-2 border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
+          className="w-full px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
         />
       </div>
 
       {/* Address Input */}
       <div className="mb-2">
-        <label className="block text-base font-medium text-[#9E2729] mb-1">
+        <label className="block text-sm sm:text-base font-medium text-[#9E2729] mb-1">
           Address
         </label>
         <input
           type="text"
           placeholder="Enter your address"
-          className="w-full px-4 py-2 border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
+          className="w-full px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
         />
       </div>
 
       {/* Password Input */}
       <div className="mb-2">
-        <label className="block text-base font-medium text-[#9E2729] mb-1">
+        <label className="block text-sm sm:text-base font-medium text-[#9E2729] mb-1">
           Password
         </label>
         <div className="relative">
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Create a password"
-            className="w-full px-4 py-2 border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
+            className="w-full px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
           />
           <button
             type="button"
@@ -110,14 +112,14 @@ const SignUpForm = () => {
 
       {/* Confirm Password Input */}
       <div className="mb-2">
-        <label className="block text-base font-medium text-[#9E2729] mb-1">
+        <label className="block text-sm sm:text-base font-medium text-[#9E2729] mb-1">
           Confirm Password
         </label>
         <div className="relative">
           <input
             type={showConfirmPassword ? "text" : "password"}
             placeholder="Re-enter password"
-            className="w-full px-4 py-2 border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
+            className="w-full px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
           />
           <button
             type="button"
@@ -137,20 +139,20 @@ const SignUpForm = () => {
       {/* Sign Up Button */}
       <Button
         onClick={handleSignUp}
-        className="w-full bg-[#9E2729] hover:bg-[#7A3333] text-white font-semibold py-3 rounded-lg mt-6 mb-2 transition-colors"
+        className="w-full bg-[#9E2729] hover:bg-[#7A3333] text-white text-sm sm:text-base font-semibold py-2 sm:py-3 rounded-lg mt-4 sm:mt-6 mb-2 transition-colors"
       >
         Sign Up
       </Button>
 
       {/* Divider */}
-      <div className="flex items-center gap-3 mb-2">
+      <div className="flex items-center gap-2 sm:gap-3 mb-2">
         <div className="flex-1 h-px bg-[#E8D5D8]"></div>
         <span className="text-sm text-gray-400">or</span>
         <div className="flex-1 h-px bg-[#E8D5D8]"></div>
       </div>
 
       {/* Google Sign Up */}
-      <Button className="w-full border bg-white border-[#E8D5D8] text-gray-700 font-medium py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors">
+      <Button className="w-full border bg-white border-[#E8D5D8] text-gray-700 text-sm sm:text-base font-medium py-2 sm:py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors">
         <svg
           className="w-5 h-5"
           viewBox="0 0 24 24"

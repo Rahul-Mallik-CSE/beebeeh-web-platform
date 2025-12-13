@@ -15,43 +15,43 @@ export const SignInForm = () => {
     router.push("/overview");
   };
   return (
-    <div className="relative z-10 w-full max-w-lg bg-white rounded-2xl shadow-lg py-8 px-6">
+    <div className="relative z-10 w-full max-w-sm sm:max-w-lg bg-white rounded-2xl shadow-lg py-6 px-4 sm:py-8 sm:px-6">
       {/* Logo dots */}
-      <div className="flex gap-2 mb-6">
-        <div className="w-8 h-4 rounded-full bg-[#9E2729]"></div>
-        <div className="w-4 h-4 rounded-full bg-[#9E2729]"></div>
-        <div className="w-4 h-4 rounded-full bg-[#9E2729]"></div>
-        <div className="w-4 h-4 rounded-full bg-[#9E2729]"></div>
+      <div className="flex gap-1.5 sm:gap-2 mb-4 sm:mb-6">
+        <div className="w-6 h-3 sm:w-8 sm:h-4 rounded-full bg-[#9E2729]"></div>
+        <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#9E2729]"></div>
+        <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#9E2729]"></div>
+        <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#9E2729]"></div>
       </div>
       {/* Welcome Text */}
-      <h1 className="text-4xl font-bold text-[#9E2729] mb-1">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#9E2729] mb-1">
         Welcome to Beebeeh
       </h1>
-      <p className="text-base text-[#9E2729] mb-6">
+      <p className="text-sm sm:text-base text-[#9E2729] mb-4 sm:mb-6">
         Sign in to access your Beebeeh dashboard and continue your work.
       </p>
 
       {/* Email Input */}
-      <div className="mb-5">
-        <label className="block text-base font-medium text-[#9E2729] mb-2">
+      <div className="mb-4 sm:mb-5">
+        <label className="block text-sm sm:text-base font-medium text-[#9E2729] mb-1.5 sm:mb-2">
           Email Address
         </label>
         <input
           type="email"
           placeholder="Enter your email address"
-          className="w-full px-4 py-2 border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
+          className="w-full px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
         />
       </div>
 
       {/* Password Input */}
       <div className="mb-2">
-        <div className="flex justify-between items-center mb-2">
-          <label className="block text-base font-medium text-[#9E2729]">
+        <div className="flex justify-between items-center mb-1.5 sm:mb-2">
+          <label className="block text-sm sm:text-base font-medium text-[#9E2729]">
             Password
           </label>
           <Link
             href="/reset-pass"
-            className="text-base text-[#9E2729] hover:underline"
+            className="text-sm sm:text-base text-[#9E2729] hover:underline"
           >
             Forgot Password?
           </Link>
@@ -60,7 +60,7 @@ export const SignInForm = () => {
           <input
             type={showPassword ? "text" : "password"}
             placeholder="••••••••"
-            className="w-full px-4 py-2 border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
+            className="w-full px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base border border-[#E8D5D8] rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A]"
           />
           <button
             type="button"
@@ -80,20 +80,20 @@ export const SignInForm = () => {
       {/* Sign In Button */}
       <Button
         onClick={handleSignIn}
-        className="w-full bg-[#9E2729] hover:bg-[#7A3333] text-white font-semibold py-3 rounded-lg mt-6 mb-4 transition-colors"
+        className="w-full bg-[#9E2729] hover:bg-[#7A3333] text-white text-sm sm:text-base font-semibold py-2 sm:py-3 rounded-lg mt-4 sm:mt-6 mb-3 sm:mb-4 transition-colors"
       >
         Sign In
       </Button>
 
       {/* Divider */}
-      <div className="flex items-center gap-3 mb-4">
+      <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
         <div className="flex-1 h-px bg-[#E8D5D8]"></div>
         <span className="text-sm text-gray-400">or</span>
         <div className="flex-1 h-px bg-[#E8D5D8]"></div>
       </div>
 
       {/* Google Login */}
-      <Button className="w-full border bg-white border-[#E8D5D8] text-gray-700 font-medium py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors">
+      <Button className="w-full border bg-white border-[#E8D5D8] text-gray-700 text-sm sm:text-base font-medium py-2 sm:py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors">
         <svg
           className="w-5 h-5"
           viewBox="0 0 24 24"
