@@ -3,6 +3,16 @@ import React from "react";
 import { MapPin } from "lucide-react";
 
 const ClientInfoSection = () => {
+  // Example coordinates for the address
+  const latitude = 34.0522;
+  const longitude = -118.2437;
+
+  const handleMapClick = () => {
+    // Open Google Maps with the coordinates
+    const googleMapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
+    window.open(googleMapsUrl, "_blank");
+  };
+
   return (
     <div className="bg-white">
       <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-2 sm:mb-3">
@@ -47,7 +57,10 @@ const ClientInfoSection = () => {
           <p className="text-gray-800 font-medium text-sm sm:text-base">
             Pin Location :
           </p>
-          <button className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 bg-[#FF6F001A] text-gray-600 rounded-lg hover:bg-orange-100 transition-colors">
+          <button
+            onClick={handleMapClick}
+            className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 bg-[#FF6F001A] text-gray-600 rounded-lg hover:bg-orange-100 transition-colors"
+          >
             <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             <span className="text-xs sm:text-sm font-medium">Map</span>
           </button>
