@@ -19,7 +19,7 @@ const StatsSection = () => {
     },
     {
       id: 2,
-      title: "Completed Work",
+      title: "Total Completed Jobs",
       value: "10293",
       icon: (
         <PiSunHorizonFill className="w-6 h-6 sm:w-7 sm:h-7 text-purple-600" />
@@ -30,7 +30,7 @@ const StatsSection = () => {
     },
     {
       id: 3,
-      title: "Pending Jobs",
+      title: "Total Pending Jobs",
       value: "10293",
       icon: (
         <FaClockRotateLeft className="w-6 h-6 sm:w-7 sm:h-7 text-[#FEC12C]" />
@@ -41,7 +41,7 @@ const StatsSection = () => {
     },
     {
       id: 4,
-      title: "Total This Month",
+      title: "Total Jobs This Month",
       value: "4",
       icon: <TbSettingsPlus className="w-6 h-6 sm:w-7 sm:h-7 text-red-600" />,
       trend: "1.3% Up from past week",
