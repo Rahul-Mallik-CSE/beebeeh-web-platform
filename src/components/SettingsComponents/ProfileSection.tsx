@@ -2,13 +2,15 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { Pencil, Lock } from "lucide-react";
+import { Pencil, Lock, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import ProfileEditModal from "./ProfileEditModal";
 import ResetPassModal from "./ResetPassModal";
+import { useRouter } from "next/navigation";
 
 const ProfileSection = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     fullName: "Malik Rahman Mihad",
     email: "name@gmail.com",
@@ -50,13 +52,16 @@ const ProfileSection = () => {
     console.log("Password updated:", newPassword);
     // Add your password update logic here
   };
+  const handleViewCalendar = () => {
+    router.push("/settings/technician-calendar");
+  };
 
   return (
     <div className="space-y-4 sm:space-y-6">
       {/* Profile Header */}
       <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-4">
-        <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-shrink-0">
-          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
+        <div className="flex items-center gap-3 sm:gap-4 min-w-0 shrink-0">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-gray-200 shrink-0">
             <Image
               src="/logo.png"
               alt="Profile"
@@ -85,6 +90,13 @@ const ProfileSection = () => {
             className="bg-[#5C3D2E] hover:bg-[#4A2F22] text-white flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2 text-sm flex-1 sm:flex-initial whitespace-nowrap"
           >
             Change Password
+          </Button>
+          <Button
+            onClick={handleViewCalendar}
+            className="bg-red-800 hover:bg-red-700 text-white flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2 text-sm flex-1 sm:flex-initial"
+          >
+            <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            View Calendar
           </Button>
         </div>
       </div>
