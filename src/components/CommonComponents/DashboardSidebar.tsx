@@ -113,7 +113,7 @@ export default function DashboardSidebar() {
                 // </div>
                 <div className="pl-4 flex flex-col justify-center items-center">
                   {/* Logo dots */}
-                  <div className="flex gap-0.5 sm:gap-1 justify-center mb-1 animate-pulse">
+                  <div className="flex gap-0.5 sm:gap-1 justify-center mb-1 ">
                     <div className="w-8 h-4 sm:w-6 sm:h-3 rounded-full bg-white"></div>
                     <div className="w-4 h-4 sm:w-3 sm:h-3 rounded-full bg-white"></div>
                     <div className="w-4 h-4 sm:w-3 sm:h-3 rounded-full bg-white"></div>
